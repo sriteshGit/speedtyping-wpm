@@ -1,0 +1,6 @@
+Windows are the basic abstraction in curses. A window object represents a rectangular area of the screen to display text.
+Arrays in python can only contain elements of same data types i.e., data type of array should be homogeneous.
+It is a thin wrapper around C language arrays and consumes far less memory than lists
+Local namespace is temporarily created for a function call and gets cleared when the function returns
+Memory management in Python is handled by the Python Memory Manager.
+This is why it is necessary to test each and every component properly so that we know the failure of the software.
