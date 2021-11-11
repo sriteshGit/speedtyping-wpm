@@ -5,7 +5,7 @@ import random
 
 def start_screen(stdscr):
     stdscr.clear()
-    stdscr.addstr(1, 0, "This is the Speed typing test...")
+    stdscr.addstr("This is the Speed typing test...")
     stdscr.addstr("\nPress any key to begin...")
     stdscr.refresh()
     stdscr.getkey()
@@ -13,14 +13,20 @@ def start_screen(stdscr):
 def display_text(stdscr, target, current, wpm=0):
     stdscr.addstr(target)
     stdscr.addstr(5,0, f"WPM: {wpm}")
-
+    stdscr.addstr(4,0, f"Press 'ESC' button to stop the typing test and 'backspace' to reset")
+    
+    char1 = " "
     for i,char in enumerate(current):
         correct_char = target[i]
         color = curses.color_pair(1)
         if correct_char != char:
             color = curses.color_pair(2)
+            char1 = char
             char = correct_char
         stdscr.addstr(0,i, char, color)
+        stdscr.addstr(1,0, "you wrong input character below")
+        stdscr.addstr(2,i,char1,color)
+        char1 = " "
 
 def load_text():
     with open("text.txt","r") as f:
@@ -56,6 +62,8 @@ def wpm_test(stdscr):
                 current_text.pop()
         elif len(current_text)<len(target_text):
             current_text.append(key)
+        else:
+            current_text = ["RESET"]
 
 
 def main(stdscr):
